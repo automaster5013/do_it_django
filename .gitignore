@@ -216,4 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-blog/migrations/0002_post_updated_at_alter_post_created_at.py
+
+migrations/
+_media/
