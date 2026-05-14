@@ -42,8 +42,18 @@
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                         </header>
+                        <!-- blog/templates/blog/post_detail.html -->
+
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                        <figure class="mb-4">
+                            {% if post.head_image %}
+                                <!-- 이미지가 있을 때만 img 태그를 출력합니다 -->
+                                <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }}" />
+                            {% else %}
+                                <!-- 이미지가 없을 때 보여줄 대체 이미지 (필요 없다면 이 else 부분은 삭제해도 됩니다) -->
+                                <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/1200/600" alt="random image" />
+                            {% endif %}
+                        </figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">{{ post.content }}</p>
