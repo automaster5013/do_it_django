@@ -1,6 +1,11 @@
 {% extends 'blog/base.html' %}
 
+{% block head_title %}
+    {{ post.title }} - Blog
+{% endblock %}
+
 {% block main_area %}
+    <div id="post-area">
  <!-- Title -->
  <h1 class="mt-4">{{ post.title }}</h1>
  {% if post.hook_text %}
@@ -52,6 +57,8 @@
     <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
 </section>
 </article>
+</div>
+<div id="comment-area">
 <!-- Comments section-->
 <section class="mb-5">
 <div class="card bg-light">
@@ -133,6 +140,7 @@
 <div class="card mb-4">
 <div class="card-header">Side Widget</div>
 <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+</div>
 </div>
 </div>
 </div>
