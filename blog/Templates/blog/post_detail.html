@@ -9,6 +9,9 @@
         <title>Blog Post - Start Bootstrap Template</title>
         <!-- Favicon-->
         <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+
+        <link rel="stylesheet" href="https://ka-f.webawesome.com/webawesome@3.7.0/styles/webawesome.css" />
+        <script type="module" src="https://ka-f.webawesome.com/webawesome@3.7.0/webawesome.loader.js"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -36,25 +39,39 @@
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                            <h5 class="text-muted">{{ post.hook_text }}</h5>
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at }} by Start Bootstrap</div>
                             <!-- Post categories-->
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                         </header>
-                        <!-- blog/templates/blog/post_detail.html -->
-
                         <!-- Preview image figure-->
                         <figure class="mb-4">
                             {% if post.head_image %}
-                                <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }}" />
+                            <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="..." />
                             {% else %}
-                                <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/1200/600" alt="random_image" />
+                            <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id}}/800/200" alt="random_image" />
                             {% endif %}
                         </figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">{{ post.content }}</p>
+
+                            {% if post.file_upload %}
+                            <a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button" download>Download</a>
+                                {% if post.get_file_ext == 'csv'%}
+                                <i class="fas fa-file-csv"></i>
+                                {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                                <i class="fas fa-file-excel"></i>
+                                {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+                                <i class="fas fa-file-word"></i>
+                                {% else %}
+                                <i class="far fa-file"></i>
+                                {% endif %}
+                                {{ post.get_file_name }}
+                            {% endif %}
+
                             <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
                             <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
                         </section>
