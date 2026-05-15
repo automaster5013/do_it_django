@@ -47,11 +47,9 @@
                         <!-- Preview image figure-->
                         <figure class="mb-4">
                             {% if post.head_image %}
-                                <!-- 이미지가 있을 때만 img 태그를 출력합니다 -->
                                 <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }}" />
                             {% else %}
-                                <!-- 이미지가 없을 때 보여줄 대체 이미지 (필요 없다면 이 else 부분은 삭제해도 됩니다) -->
-                                <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/1200/600" alt="random image" />
+                                <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/1200/600" alt="random_image" />
                             {% endif %}
                         </figure>
                         <!-- Post content-->
