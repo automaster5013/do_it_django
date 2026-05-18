@@ -42,7 +42,6 @@ def tag_page(request, slug):
         }
     )
 
-
 class PostDetail(DetailView):
     model = Post
 
@@ -52,13 +51,9 @@ class PostDetail(DetailView):
         context['no_category_post_count'] = Post.objects.filter(category=None).count()
         return context
 
-
 class PostCreate(CreateView):
     model = Post
-    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category',]
-
-
-
+    fields = ['title','hook_text','content','head_image','file_upload','category',]
 
 # def index(request):
 #     posts = Post.objects.all().order_by('-pk')
