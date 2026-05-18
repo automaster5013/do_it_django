@@ -63,7 +63,6 @@ class PostCreate(LoginRequiredMixin, CreateView):
             return super(PostCreate, self).form_valid(form)
         else:
             return redirect('/blog/')
-            
 
 # def index(request):
 #     posts = Post.objects.all().order_by('-pk')
