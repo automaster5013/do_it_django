@@ -12,7 +12,7 @@ cmd> python -m venv venv
 
 pip list
 
-pip install django, pillow
+pip install django, pillow, django_extensions, ipython
 
 장고 프로젝트 생성
 (venv) django-admin startproject do_it_django_prj .
