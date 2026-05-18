@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post, Category, Tag
 from django.shortcuts import render
 
@@ -32,16 +32,16 @@ def tag_page(request, slug):
     post_list = tag.post_set.all()
 
     return render(
-        request, 
+        request,
         'blog/post_list.html',
         {
             'post_list': post_list,
             'tag': tag,
             'categories': Category.objects.all(),
-            'no_category_post_count': Post.objects
-            .filter(category=None).count(),
-        } 
+            'no_category_post_count': Post.objects.filter(category=None).count(),
+        }
     )
+
 
 class PostDetail(DetailView):
     model = Post
@@ -51,6 +51,14 @@ class PostDetail(DetailView):
         context['categories'] = Category.objects.all()
         context['no_category_post_count'] = Post.objects.filter(category=None).count()
         return context
+
+
+class PostCreate(CreateView):
+    model = Post
+    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category',]
+
+
+
 
 # def index(request):
 #     posts = Post.objects.all().order_by('-pk')
