@@ -6,6 +6,12 @@
 
 {% block main_area %}
     <div id="post-area">
+        {% if post.category %}
+            {{post.category}}
+        {% else %}
+            미분류
+        {% endif %}
+
  <!-- Title -->
  <h1 class="mt-4">{{ post.title }}</h1>
  {% if post.hook_text %}
