@@ -39,7 +39,7 @@
                     {% if p.tags.exists %}
                         <i class="fas fa-tags"></i>
                         {% for tag in p.tags.iterator %}
-                            <a href="{{ ag.get_absolute_url }}">{{ tag }}</a>
+                            <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
                         {% endfor %}
                         <br />
                         <br />
