@@ -4,4 +4,4 @@ python -m venv venv
 
 pip list
 
-pip install django, pillow, django_extensions, ipython, django-crispy-forms, crispy-bootstrap4
+pip install django, pillow, django_extensions, ipython, django-crispy-forms, crispy-bootstrap4, django-allauth
