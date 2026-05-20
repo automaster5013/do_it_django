@@ -1,13 +1,15 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}
     {{ post.title }} - Blog
 {% endblock %}
 
+
 {% block main_area %}
     <div id="post-area">
         {% if post.category %}
-            {{post.category}}
+            <span class="float-right">{{ post.category }}</span>
         {% else %}
             미분류
         {% endif %}
@@ -26,11 +28,9 @@
 
  <hr>
 
-{% if user.is_authenticated and user == post.author %} 
- <a class="btn btn-info btn-sm float-right"
-  href="/blog/update_post/{{ post.pk }}/" role="button">
-    <i class="fas fa-pen"></i>Edit Post</a>
-{% endif %}
+        {% if user.is_authenticated and user == post.author %}
+            <a class="btn btn-info btn-sm float-right" href="/blog/update_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i>  Edit Post</a>
+        {% endif %}
 
  <!-- Date/Time -->
  <p>Posted on {{ post.created_at }}</p>
@@ -73,19 +73,56 @@
         {% endif %}
         {{ post.get_file_name }}
     {% endif %}
-
-    <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-    <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
 </section>
-</article>
 </div>
 <div id="comment-area">
 <!-- Comments section-->
 <section class="mb-5">
-<div class="card bg-light">
-    <div class="card-body">
+<div class="card bg-light mb-4">
+	<h5 class="card-header">Leave a Comment:</h5>
+    <div class="card-body py-3">
         <!-- Comment form-->
-        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+        {% if user.is_authenticated %}
+        <form id="comment-form" method="POST" action="{{ post.get_absolute_url }}new_comment/">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                {{ comment_form | crispy }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% else %}
+        <a role="button" class="btn btn-outline-dark btn-sm" href="#" data-toggle="modal" data-target="#loginModal">Log in and leave a comment</a>
+        {% endif %}
+    </div>
+</div>
+
+        {% if post.comment_set.exists %}
+            {% for comment in post.comment_set.iterator %}
+            <!-- Single comment-->
+        <div class="d-flex" id="comment-{{ comment.pk }}">
+            <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+            <div class="ms-3">
+
+                {% if user.is_authenticated and comment.author == user %}
+                <div class="float-right">
+                    <a role="button"
+                        class="btn btn-sm btn-info float-right"
+                        id="comment-{{comment.pk}}-update-btn"
+                        href="/blog/update_comment/{{comment.pk}}/">edit</a>
+                </div>
+                {% endif %}
+
+                <div class="fw-bold">{{ comment.author.username }} &nbsp;&nbsp;
+                    <small class="text-muted">{{comment.created_at}}</small></div>
+                <p>{{ comment.content | linebreaks}}</p>
+                {% if comment.created_at != comment.modified_at %}
+                    <p class="text-muted float-right"><small>Updated: {{ comment.modified_at }}</small></p>
+                {% endif %}
+            </div>
+        </div>
+            {% endfor %}
+        {% endif %}
+        
         <!-- Comment with nested comments-->
         <div class="d-flex mb-4">
             <!-- Parent comment-->
@@ -119,8 +156,6 @@
                 When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
             </div>
         </div>
-    </div>
-</div>
 </section>
 </div>
 <!-- Side widgets-->
