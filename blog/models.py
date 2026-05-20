@@ -66,3 +66,6 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return f'{self.post.get_absolute_url()}#comment-{self.pk}'
+
+    def get_avartar_url(self):
+        return 'http://placehold.it/50x50'

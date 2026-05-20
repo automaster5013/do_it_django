@@ -8,6 +8,7 @@
     {% endif %}
 
     <h1>Blog
+        {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
         {% if category %}{{ category }}{% endif %}
         {% if tag %}{{ tag }}({{ tag.post_set.count }}){% endif %}
     </h1>
