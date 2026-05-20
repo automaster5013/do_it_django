@@ -13,6 +13,7 @@ from blog.forms import CommentForm
 class PostList(ListView):
     model = Post
     ordering = '-pk'
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super(PostList, self).get_context_data()
@@ -60,6 +61,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
 
         else:
                 return redirect('/blog/')
+
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
@@ -169,6 +171,15 @@ class CommentUpdate(LoginRequiredMixin, UpdateView):
             return super(CommentUpdate, self).dispatch(request, *args, **kwargs)
         else:
             raise PermissionDenied
+
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    post = comment.post
+    if request.user.is_authenticated and request.user == comment.author:
+        comment.delete()
+        return redirect(post.get_absolute_url())
+    else:
+        raise PermissionDenied
 
 # def index(request):
 #     posts = Post.objects.all().order_by('-pk')
