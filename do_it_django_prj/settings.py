@@ -139,6 +139,13 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+# ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_SIGNUP_FIELDS = [
+    'email*',
+    'username*',
+    'password1*',
+    'password2*',
+]
+ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 LOGIN_REDIRECT_URL = '/blog/'
