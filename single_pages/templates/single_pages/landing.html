@@ -5,15 +5,39 @@
         <meta charset="UTF-8">
         <title>Do It Django</title>
         <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+        <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}" media="screen">
     </head>
     <body>
         {% include 'blog/navbar.html' %}
 
-        <h1>안녕하세요. 달타냥입니다.</h1>
-        <h2>대문페이지</h2>
-        <h3>아직 만들지 않음</h3>
+        <section>
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-6 text-light">
+                        <h1 class="mt-5">Do It Django</h1>
+                        <p>파이썬 진영의 가장 대표적인 웹프레임워크 중 하나인 django를 이용하여 여러분만의 블로그 사이트를 만들어보세요.</p>
+                    </div>
+                    <div class="col-lg-5 mt-5">
+                        <h2 class="text-light">Blog - Recent posts</h2>
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                This is some text within a card body.
+                            </div>
+                        </div>
 
-        {% include 'blog/footer.html' %}
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                This is some text within a card body.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="fixed-bottom">
+            {% include 'blog/footer.html' %}
+        </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

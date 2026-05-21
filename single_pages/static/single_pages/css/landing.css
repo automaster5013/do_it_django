@@ -1,0 +1,11 @@
+body {
+    background-image: url('../images/river1.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+section {
+    margin-bottom: 150px;
+}
