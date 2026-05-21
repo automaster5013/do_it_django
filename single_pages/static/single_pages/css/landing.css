@@ -1,15 +1,64 @@
 body {
-    background-image: url('../images/river1.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: "Pretendard", sans-serif;
 }
 
-section {
-    margin-bottom: 150px;
+/* Hero 영역 */
+.hero-section {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e3c72,
+            #2a5298,
+            #4f46e5
+        );
+
+    display: flex;
+    align-items: center;
 }
 
-.card {
-    background-color: rgba(255, 255, 0.6);
+/* 최근 글 카드 */
+.post-card {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* 제목 Hover */
+.post-card a:hover {
+    color: #4f46e5 !important;
+}
+
+/* Recent Posts 영역 */
+.recent-post-wrapper {
+    backdrop-filter: blur(10px);
+}
+
+/* 버튼 */
+.btn-light {
+    font-weight: 600;
+}
+
+.btn-outline-light:hover {
+    color: #4f46e5;
+}
+
+/* 모바일 */
+@media (max-width: 991px) {
+
+    .hero-section {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .display-3 {
+        font-size: 3rem;
+    }
 }

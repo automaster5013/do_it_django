@@ -1,18 +1,217 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>개발자 달타냥입니다.</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/blog">Blog</a>
-            <a href="/about_me">About me</a>
-        </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Myeonghwi</title>
 
-        <h1>안녕하세요. 달타냥입니다.</h1>
-        <h2>이력</h2>
-        <h2>Portfolio</h2>
-        <h3>아직 공사중입니다.</h3>
-    </body>
+    <link rel="stylesheet"
+          href="{% static 'blog/bootstrap/bootstrap.min.css' %}"
+          media="screen">
+
+    <link rel="stylesheet"
+          href="{% static 'single_pages/css/about_me.css' %}"
+          media="screen">
+</head>
+
+<body>
+
+{% include 'blog/navbar.html' %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-75">
+
+            <!-- 소개글 -->
+            <div class="col-lg-7 text-white">
+                <h1 class="display-4 font-weight-bold">
+                    안녕하세요 👋
+                </h1>
+
+                <h2 class="mb-4">
+                    AI & Full Stack Developer 이명휘입니다.
+                </h2>
+
+                <p class="lead">
+                    Django, React, YOLO 기반의 AI 비전 시스템과
+                    웹 서비스를 개발하고 있습니다.
+                </p>
+
+                <a href="#projects" class="btn btn-primary btn-lg mt-3">
+                    프로젝트 보기
+                </a>
+            </div>
+
+            <!-- 프로필 사진 -->
+            <div class="col-lg-5 text-center">
+                <img src="{% static 'single_pages/images/wb1.jpg' %}"
+                     class="img-fluid profile-image shadow-lg"
+                     alt="프로필 이미지">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="py-5 bg-white">
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            About Me
+        </h2>
+
+        <div class="card shadow border-0">
+            <div class="card-body p-5">
+
+                <p>
+                    현재 AI 비전 및 웹 개발 분야를 공부하고 있으며,
+                    Python, Django, React, YOLO를 활용한 프로젝트를
+                    진행하고 있습니다.
+                </p>
+
+                <p>
+                    특히 산업안전 분야의 헬멧 착용 감지 시스템,
+                    객체 탐지 및 추적 시스템 개발에 관심이 많습니다.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Skill -->
+<section class="py-5 bg-light">
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            Skills
+        </h2>
+
+        <div class="text-center">
+
+            <span class="badge badge-primary skill-badge">
+                Python
+            </span>
+
+            <span class="badge badge-success skill-badge">
+                Django
+            </span>
+
+            <span class="badge badge-info skill-badge">
+                React
+            </span>
+
+            <span class="badge badge-warning skill-badge">
+                YOLO
+            </span>
+
+            <span class="badge badge-dark skill-badge">
+                OpenCV
+            </span>
+
+            <span class="badge badge-danger skill-badge">
+                PyTorch
+            </span>
+
+            <span class="badge badge-secondary skill-badge">
+                Linux
+            </span>
+
+            <span class="badge badge-primary skill-badge">
+                Docker
+            </span>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="py-5 bg-white">
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            Projects
+        </h2>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+                        <h4>Helmet Detection</h4>
+
+                        <p>
+                            YOLO 기반 산업안전 헬멧 착용 감지 시스템
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+                        <h4>Django Blog</h4>
+
+                        <p>
+                            Django를 활용한 블로그 웹 서비스
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+                        <h4>React Dashboard</h4>
+
+                        <p>
+                            React 기반 관리자 대시보드 개발
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="py-5 contact-section">
+
+    <div class="container text-center text-white">
+
+        <h2>Contact</h2>
+
+        <p class="lead">
+            새로운 프로젝트와 협업을 환영합니다.
+        </p>
+
+        <a href="mailto:your_email@example.com"
+           class="btn btn-outline-light">
+            이메일 보내기
+        </a>
+
+    </div>
+
+</section>
+
+{% include 'blog/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
 </html>

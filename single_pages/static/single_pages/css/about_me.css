@@ -1,0 +1,53 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Hero 영역 */
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #2563eb
+    );
+
+    padding: 100px 0;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.profile-image {
+    border-radius: 20px;
+    max-width: 380px;
+    border: 5px solid white;
+    transition: 0.3s;
+}
+
+.profile-image:hover {
+    transform: scale(1.03);
+}
+
+/* Skill Badge */
+.skill-badge {
+    font-size: 1rem;
+    margin: 8px;
+    padding: 12px 20px;
+}
+
+/* 카드 */
+.card {
+    border-radius: 15px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+}
+
+/* Contact */
+.contact-section {
+    background: #1e293b;
+}
