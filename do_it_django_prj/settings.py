@@ -14,6 +14,8 @@ from operator import truediv
 import os
 from pathlib import Path
 
+from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,15 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1ky@#xb8v4jx)aadfradii1kh=ozk%wrql!y=4)!9dze7illo$'
+# Keep the signing key outside source control in every environment.
+SECRET_KEY = os.environ.get('SECRET_KEY', '').strip()
+if not SECRET_KEY:
+    raise ImproperlyConfigured('SECRET_KEY must be set in the environment')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = int(os.environ.get('DEBUG', 1))
+DEBUG = os.environ.get('DEBUG', '0') == '1'
 
 if os.environ.get('DJANGO_ALLOWED_HOSTS'):
-    ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
+    ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split()
 else:
     ALLOWED_HOSTS = []
 

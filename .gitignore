@@ -60,6 +60,9 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+.env
+.env.*
+!.env.dev.example
 
 # Flask stuff:
 instance/
